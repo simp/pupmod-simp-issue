@@ -4,7 +4,7 @@
   "author": "SIMP Team",
   "summary": "A SIMP Puppet module for managing /etc/issue",
   "license": "Apache-2.0",
-  "source": "https://github.com/simp/pupmod-simp-issue.git",
+  "source": "https://github.com/simp/pupmod-simp-issue",
   "project_page": "https://github.com/simp/pupmod-simp-issue",
   "issues_url": "https://simp-project.atlassian.net",
   "tags": [
@@ -41,7 +41,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": "4.x"
+      "version_requirement": ">= 4.7.0 < 5.0.0"
     }
   ],
   "data_provider": "hiera"
