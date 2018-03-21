@@ -33,6 +33,8 @@ class issue (
   Boolean          $net_link    = true,
   Optional[String] $net_content = undef
 ) {
+  simplib::assert_metadata($module_name)
+
   $_valid_profiles = [
     'default',
     'lite',
