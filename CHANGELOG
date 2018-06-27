@@ -1,3 +1,7 @@
+* Mon Jun 25 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 0.0.3-0
+- Removed the static banners from the module and tied the module to the
+  `simp/simp_banners` module
+
 * Thu Jul 06 2017 Liz Nemsick <lnemsick.simp@gmail.com> - 0.0.2-0
 - Update puppet dependency and remove OBE pe dependency in metadata.json
 
