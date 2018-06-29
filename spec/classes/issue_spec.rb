@@ -16,6 +16,21 @@ describe 'issue', type: :class do
         end
       end
 
+      context 'When profile is specified' do
+        let(:params) do
+          {
+            profile: 'us/department_of_commerce'
+          }
+        end
+
+        it do
+          should contain_File('/etc/issue').with(
+            ensure: 'file',
+            content: /Department of Commerce/i
+          )
+        end
+      end
+
       context 'When content is specified' do
         let(:params) do
           {
