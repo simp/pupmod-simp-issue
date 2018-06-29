@@ -3,8 +3,7 @@ fixtures:
   repositories:
     stdlib:   "https://github.com/simp/puppetlabs-stdlib.git"
     simplib:  "https://github.com/simp/pupmod-simp-simplib.git"
-    #simp_banners: "https://github.com/simp/pupmod-simp-simp_banners"
+    simp_banners: "https://github.com/simp/pupmod-simp-simp_banners"
   symlinks:
     issue: "#{source_dir}"
-    simp_banners: "#{source_dir}/../simp_banners"
 
