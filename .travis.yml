@@ -34,6 +34,7 @@ jobs:
         - bundle exec rake check:test_file
         - bundle exec rake pkg:check_version
         - bundle exec rake metadata_lint
+        - bundle exec rake pkg:check_version
         - bundle exec rake pkg:compare_latest_tag
         - bundle exec rake pkg:create_tag_changelog
         - bundle exec rake lint
@@ -59,6 +60,12 @@ jobs:
 
     - stage: spec
       rvm: 2.1.9
+      env: STRICT_VARIABLES=yes TRUSTED_NODE_DATA=yes PUPPET_VERSION="~> 4.8.2"
+      script:
+        - bundle exec rake spec
+
+    - stage: spec
+      rvm: 2.1.9
       env: STRICT_VARIABLES=yes TRUSTED_NODE_DATA=yes PUPPET_VERSION="~> 4.7.0"
       script:
         - bundle exec rake spec
@@ -70,7 +77,6 @@ jobs:
       before_deploy:
         - "export PUPMOD_METADATA_VERSION=`ruby -r json -e \"puts JSON.parse(File.read('metadata.json')).fetch('version')\"`"
         - '[[ $TRAVIS_TAG =~ ^simp-${PUPMOD_METADATA_VERSION}$|^${PUPMOD_METADATA_VERSION}$ ]]'
-
       deploy:
         - provider: releases
           api_key:
@@ -85,4 +91,5 @@ jobs:
             secure: "d/Rv4hKx7BgvktVYdWRv3SGQcwzzxMH1rZBeel8GBt0FUyWr+dpOEA/DAEoivZ4vpu+7Kmd5rOJEQHmkR9uCb+HW2xFmuTUHlDLNAS7W1qoz6eE8GFGUe3NSDnX3xgzxri8d7BtYRsOu2jZzBLaO/I6EPYtZb907pwh6w1GA3LH1CnLm9YC16gTLd0NSEZu8YZoWT6w/lBpccOrhqeJWwr3uHxeYvzkyZbagTQdialpCP8h0nbk8kQbG4wO4CWeTOsSgtReEJKVXtW7A+DK1Ew/H+xCstpaXTkQyYxgX2G0Y5feSZNhAo3ptw+kA0AiP7E8GVXoTNVVs3Oip3qzmz63VUWcdcXC7HKW8853FOefS8lDXplfjiH9aJeGuzs/Vl67bgCT28gD57FxBsT/S6nS3Y3tQUmlTrwUVTT4wOosSaP7UaREQJ7NYTf3OZkhxQGeTyo7MZuAhp72zNCZpEEA6uTCIJZE4bQozxTF/gM2Y4jf8zllBbco7DylWGAs+7gy4PtpOStPVBci4VHFKbiZB4llWJLT3CD7okYi3/eCfBVWtCtPh5wBMiWqGBjXSUmMPyd2ZZBypl9ckvCujsykEi5KtaHEClXk+JcBncDEIV2E+yOsSPaiD/RxosyZQ5HoFBoWgQSV1OsNJSZqjOx5B+63f4xY7tG/7dsyKvZE="
           on:
             tags: true
+            rvm: 2.4.1
             condition: '($SKIP_FORGE_PUBLISH != true)'

@@ -5,14 +5,21 @@
 #
 #   Will be overridden by `$content` and/or `$net_content`
 #
-#   Valid values include:
-#     * default     => Standard, we watch everything
-#     * lite        => We only watch for bad things
-#     * us_doc      => U.S. Department of Commerce
-#     * us_doc_lite => U.S. Department of Commerce lite
-#     * us_dod      => U.S. Department of Defense (STIG Compat)
-#     * us_noaa     => U.S. National Oceanic and Atmospehric
-#                      Administration
+#   Valid values are defined by the `simp_banners` module but the local module
+#   has the following mappings for legacy support
+#     * default      => Standard, we watch everything
+#       * New Option => 'simp'
+#     * lite         => We only watch for bad things
+#       * New Option => 'simp_lite'
+#     * us_doc       => U.S. Department of Commerce
+#       * New Option => 'us/department_of_commerce'
+#     * us_doc_lite  => U.S. Department of Commerce lite
+#       * New Option => 'us/department_of_commerce_lite'
+#     * us_dod       => U.S. Department of Defense (STIG Compat)
+#       * New Option => 'us/department_of_defense'
+#     * us_noaa      => U.S. National Oceanic and Atmospehric
+#                       Administration
+#       * New Option => 'us/national_oceanic_and_atmospheric_administration'
 #
 # @param content
 #   Defaults to a stock `/etc/issue` file in the module. Provide a custom
@@ -35,25 +42,25 @@ class issue (
 ) {
   simplib::assert_metadata($module_name)
 
-  $_valid_profiles = [
-    'default',
-    'lite',
-    'us_doc',
-    'us_doc_lite',
-    'us_dod',
-    'us_noaa'
-  ]
+  # This is needed for backward compatibility
+  $_valid_profiles = {
+    'default'     => 'simp',
+    'lite'        => 'simp_lite',
+    'us_doc'      => 'us/department_of_commerce',
+    'us_doc_lite' => 'us/department_of_commerce_lite',
+    'us_dod'      => 'us/department_of_defense',
+    'us_noaa'     => 'us/national_oceanic_and_atmospheric_administration'
+  }
 
   if $content {
     $_content = $content
   }
   else {
-    if $profile in $_valid_profiles {
-      $_content = file("${module_name}/issue/${profile}")
+    if $profile in keys($_valid_profiles) {
+      $_content = simp_banners::fetch($_valid_profiles[$profile])
     }
     else {
-      $_valid_profile_string = join($_valid_profiles,', ')
-      fail("You must choose a valid profile ${_valid_profile_string}")
+      $_content = simp_banners::fetch($profile)
     }
   }
 

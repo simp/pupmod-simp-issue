@@ -1,4 +1,6 @@
-* Tue Mar 20 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 0.0.3-0
+* Mon Jun 25 2018 Trevor Vaughan <tvaughan@onyxpoint.com> - 0.0.3-0
+- Removed the static banners from the module and tied the module to the
+  `simp/simp_banners` module
 - Add support for OEL and Puppet 5
 
 * Thu Jul 06 2017 Liz Nemsick <lnemsick.simp@gmail.com> - 0.0.2-0
