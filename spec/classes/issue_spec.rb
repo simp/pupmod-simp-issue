@@ -3,6 +3,10 @@ require 'spec_helper'
 describe 'issue', type: :class do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
+      let(:facts) do
+        facts
+      end
+
       context 'When nothing is specified' do
         it do
           should contain_File('/etc/issue').with(
