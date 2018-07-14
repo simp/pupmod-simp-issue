@@ -40,6 +40,13 @@
         "6",
         "7"
       ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
     }
   ],
   "requirements": [
@@ -47,6 +54,5 @@
       "name": "puppet",
       "version_requirement": ">= 4.7.0 < 6.0.0"
     }
-  ],
-  "data_provider": "hiera"
+  ]
 }

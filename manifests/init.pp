@@ -40,6 +40,7 @@ class issue (
   Boolean          $net_link    = true,
   Optional[String] $net_content = undef
 ) {
+  simplib::assert_metadata($module_name)
 
   # This is needed for backward compatibility
   $_valid_profiles = {
