@@ -1,0 +1,52 @@
+---
+version: 2.0.0
+checks:
+  oval:com.puppet.forge.simp.issue.profile.el6:
+    settings:
+      parameter: issue::profile
+      value: default
+    type: puppet-class-parameter
+    controls:
+      nist_800_53_rev4:AC-8: true
+    identifiers:
+      nist_800_53_rev4:
+      - AC-8
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '6'
+  oval:com.puppet.forge.simp.issue.profile:
+    settings:
+      parameter: issue::profile
+      value: us_dod
+    type: puppet-class-parameter
+    controls:
+      disa_stig: true
+      RHEL-07-010030: true
+      SRG-OS-000023-GPOS-00006: true
+      SRG-OS-000024-GPOS-00007: true
+      cci:CCI-000048: true
+    identifiers:
+      disa_stig:
+      - RHEL-07-010030
+      - SRG-OS-000023-GPOS-00006
+      - SRG-OS-000024-GPOS-00007
+      - CCI-000048
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '7'
+    oval-ids:
+    - xccdf_org:ssgproject:content_rule_banner_etc_issue
+    - banner_etc_issue
+  oval:com.puppet.forge.simp.issue.profile.nist_800_53_rev4:
+    settings:
+      parameter: issue::profile
+      value: default
+    type: puppet-class-parameter
+    controls:
+      nist_800_53_rev4:AC-8: true
+    identifiers:
+      nist_800_53_rev4:
+      - AC-8
+    confine:
+      osfamily: RedHat
+      operatingsystemmajrelease: '7'
