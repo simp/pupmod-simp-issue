@@ -49,6 +49,23 @@ describe 'issue', type: :class do
         end
       end
 
+      context 'When source is specified' do
+        let(:params) do
+          {
+            source: 'puppet:///modules/site/etc/issue'
+          }
+        end
+        it do
+          should contain_File('/etc/issue').only_with(
+            ensure: 'file',
+            mode: '0644',
+            owner: 'root',
+            group: 'root',
+            source: 'puppet:///modules/site/etc/issue'
+          )
+        end
+      end
+
       context 'When net_link is true' do
         let(:params) do
           {
