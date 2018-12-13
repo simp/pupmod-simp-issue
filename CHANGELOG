@@ -1,3 +1,7 @@
+* Tue Dec 11 2018 Adam Yohrling <adam.yohrling@onyxpoint.com> - 0.0.4-0
+- Add source parameter to be able to specify a file for use directly
+  within hiera data
+
 * Wed Nov 07 2018 Liz Nemsick <lnemsick.simp@gmail.com> - 0.0.3-0
 - Update static assets
 - Update to onyxpoint OEL boxes in acceptance tests

@@ -1,6 +1,6 @@
 {
   "name": "simp-issue",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "SIMP Team",
   "summary": "A SIMP Puppet module for managing /etc/issue",
   "license": "Apache-2.0",

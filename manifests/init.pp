@@ -26,6 +26,11 @@
 #   string or file reference to customize. Follows the `File` resource
 #   `content` parameter syntax.
 #
+# @param source
+#   Provide a file resource pointer that can be used to set the source of
+#   the file to use for a banner. Cannot be set with $content. Follows the
+#   `File` resource `source` parameter syntax.
+#
 # @param net_link
 #   If set, links `/etc/issue.net` to `/etc/issue`
 #
@@ -35,10 +40,11 @@
 #   parameter syntax.
 #
 class issue (
-  String           $profile     = 'default',
-  Optional[String] $content     = undef,
-  Boolean          $net_link    = true,
-  Optional[String] $net_content = undef
+  String                                            $profile     = 'default',
+  Optional[String]                                  $content     = undef,
+  Optional[Pattern[/^puppet:/, /^file:/, /^http:/]] $source      = undef,
+  Boolean                                           $net_link    = true,
+  Optional[String]                                  $net_content = undef
 ) {
   simplib::assert_metadata($module_name)
 
@@ -52,8 +58,15 @@ class issue (
     'us_noaa'     => 'us/national_oceanic_and_atmospheric_administration'
   }
 
+  # Default to content if set, otherwise, check source then use the
+  # profile.
   if $content {
     $_content = $content
+    $_source  = undef
+  }
+  elsif $source {
+    $_content = undef
+    $_source  = $source
   }
   else {
     if $profile in keys($_valid_profiles) {
@@ -62,6 +75,7 @@ class issue (
     else {
       $_content = simp_banners::fetch($profile)
     }
+    $_source = undef
   }
 
   $net_source = $net_link ? {
@@ -78,6 +92,7 @@ class issue (
     mode    => '0644',
     owner   => 'root',
     group   => 'root',
+    source  => $_source,
     content => $_content
   }
 
