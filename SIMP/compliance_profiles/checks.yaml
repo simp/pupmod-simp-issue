@@ -7,9 +7,10 @@ checks:
       value: default
     type: puppet-class-parameter
     controls:
-      nist_800_53_rev4:AC-8: true
+      nist_800_53:rev4: true
+      nist_800_53:rev4:AC-8: true
     identifiers:
-      nist_800_53_rev4:
+      nist_800_53:rev4:
       - AC-8
     confine:
       osfamily: RedHat
@@ -37,15 +38,16 @@ checks:
     oval-ids:
     - xccdf_org:ssgproject:content_rule_banner_etc_issue
     - banner_etc_issue
-  oval:com.puppet.forge.simp.issue.profile.nist_800_53_rev4:
+  oval:com.puppet.forge.simp.issue.profile.nist_800_53:rev4:
     settings:
       parameter: issue::profile
       value: default
     type: puppet-class-parameter
     controls:
-      nist_800_53_rev4:AC-8: true
+      nist_800_53:rev4: true
+      nist_800_53:rev4:AC-8: true
     identifiers:
-      nist_800_53_rev4:
+      nist_800_53:rev4:
       - AC-8
     confine:
       osfamily: RedHat
