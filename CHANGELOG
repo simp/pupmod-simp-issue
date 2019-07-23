@@ -1,4 +1,7 @@
-* Thu Jun 06 2019 Steven Pritchard <steven.pritchard@onyxpoint.com> -0.1.0-0
+* Tue Jul 23 2019 Chris Tessmer <chris.tessmer@onyxpoint.com> - 0.1.0-0
+- Add REFERENCE.md for Puppet Forge
+
+* Thu Jun 06 2019 Steven Pritchard <steven.pritchard@onyxpoint.com> - 0.1.0-0
 - Add v2 compliance_markup data
 - Add support for puppetlabs-stdlib 6
 

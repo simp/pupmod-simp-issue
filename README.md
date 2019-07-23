@@ -33,7 +33,6 @@ This module is optimally designed for use within a larger SIMP ecosystem, but it
 
 ## Setup
 
-
 Include the class to use it:
 
 ``` ruby
@@ -45,16 +44,16 @@ class { 'issue':
 ## Reference
 
 Available issue files are:
-  * default
-  * lite
-  * us_doc
-  * us_doc_lite
-  * us_dod
-  * us_noaa
+  * `default`
+  * `lite`
+  * `us_doc`
+  * `us_doc_lite`
+  * `us_dod`
+  * `us_noaa`
 
 They can be read in entirety in the `files/issue` directory.
 
-Please refer to the inline documentation within each source file, or to the module's generated YARD documentation for reference material.
+For further documentation, see [REFERENCE.md](https://github.com/simp/pupmod-simp-issue/blob/master/REFERENCE.md)
 
 
 ## Limitations
@@ -64,4 +63,4 @@ SIMP Puppet modules are generally intended for use on Red Hat Enterprise Linux a
 
 ## Development
 
-Please read our [Contribution Guide] (https://simp.readthedocs.io/en/stable/contributors_guide/index.html).
+Please read our [Contribution Guide](https://simp.readthedocs.io/en/stable/contributors_guide/index.html).
