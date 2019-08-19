@@ -1,3 +1,6 @@
+* Thu Aug 15 2019 Trevor Vaughan <tvaughan@onyxpoint.com> - 0.1.1-0
+- Fix compliance engine data
+
 * Tue Jul 23 2019 Chris Tessmer <chris.tessmer@onyxpoint.com> - 0.1.0-0
 - Add REFERENCE.md for Puppet Forge
 
