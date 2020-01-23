@@ -55,7 +55,8 @@ class issue (
     'us_doc'      => 'us/department_of_commerce',
     'us_doc_lite' => 'us/department_of_commerce_lite',
     'us_dod'      => 'us/department_of_defense',
-    'us_noaa'     => 'us/national_oceanic_and_atmospheric_administration'
+    'us_noaa'     => 'us/national_oceanic_and_atmospheric_administration', 
+    'us_disa'     => 'us/defense_information_systems_agency'
   }
 
   # Default to content if set, otherwise, check source then use the
