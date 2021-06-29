@@ -1,9 +1,9 @@
 ---
 fixtures:
   repositories:
-    compliance_markup: https://github.com/simp/pupmod-simp-compliance_markup
-    stdlib: "https://github.com/simp/puppetlabs-stdlib.git"
-    simplib: "https://github.com/simp/pupmod-simp-simplib.git"
-    simp_banners: "https://github.com/simp/pupmod-simp-simp_banners"
+    compliance_markup: https://github.com/simp/pupmod-simp-compliance_markup.git
+    stdlib: https://github.com/simp/puppetlabs-stdlib.git
+    simplib: https://github.com/simp/pupmod-simp-simplib.git
+    simp_banners: https://github.com/simp/pupmod-simp-simp_banners.git
   symlinks:
     issue: "#{source_dir}"
