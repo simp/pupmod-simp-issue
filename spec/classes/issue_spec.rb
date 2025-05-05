@@ -9,13 +9,13 @@ describe 'issue', type: :class do
 
       context 'When nothing is specified' do
         it do
-          should contain_File('/etc/issue').with(
+          is_expected.to contain_File('/etc/issue').with(
             ensure: 'file',
-            content: /ATTENTION/
+            content: %r{ATTENTION},
           )
-          should contain_File('/etc/issue.net').with(
+          is_expected.to contain_File('/etc/issue.net').with(
             ensure: 'file',
-            source: 'file:///etc/issue'
+            source: 'file:///etc/issue',
           )
         end
       end
@@ -28,9 +28,9 @@ describe 'issue', type: :class do
         end
 
         it do
-          should contain_File('/etc/issue').with(
+          is_expected.to contain_File('/etc/issue').with(
             ensure: 'file',
-            content: /Department of Commerce/i
+            content: %r{Department of Commerce}i,
           )
         end
       end
@@ -41,10 +41,11 @@ describe 'issue', type: :class do
             content: 'Hello!'
           }
         end
+
         it do
-          should contain_File('/etc/issue').with(
+          is_expected.to contain_File('/etc/issue').with(
             ensure: 'file',
-            content: 'Hello!'
+            content: 'Hello!',
           )
         end
       end
@@ -55,13 +56,14 @@ describe 'issue', type: :class do
             source: 'puppet:///modules/site/etc/issue'
           }
         end
+
         it do
-          should contain_File('/etc/issue').only_with(
+          is_expected.to contain_File('/etc/issue').only_with(
             ensure: 'file',
             mode: '0644',
             owner: 'root',
             group: 'root',
-            source: 'puppet:///modules/site/etc/issue'
+            source: 'puppet:///modules/site/etc/issue',
           )
         end
       end
@@ -72,14 +74,15 @@ describe 'issue', type: :class do
             net_link: true
           }
         end
+
         it do
-          should contain_File('/etc/issue').with(
+          is_expected.to contain_File('/etc/issue').with(
             ensure: 'file',
-            content: /ATTENTION/
+            content: %r{ATTENTION},
           )
-          should contain_File('/etc/issue.net').with(
+          is_expected.to contain_File('/etc/issue.net').with(
             ensure: 'file',
-            source: 'file:///etc/issue'
+            source: 'file:///etc/issue',
           )
         end
       end
@@ -91,14 +94,15 @@ describe 'issue', type: :class do
             net_content: 'Hello!'
           }
         end
+
         it do
-          should contain_File('/etc/issue').with(
+          is_expected.to contain_File('/etc/issue').with(
             ensure: 'file',
-            content: /ATTENTION/
+            content: %r{ATTENTION},
           )
-          should contain_File('/etc/issue.net').with(
+          is_expected.to contain_File('/etc/issue.net').with(
             ensure: 'file',
-            content: 'Hello!'
+            content: 'Hello!',
           )
         end
       end
@@ -109,11 +113,11 @@ describe 'issue', type: :class do
             net_link: false
           }
         end
+
         it do
-          expect{ is_expected.to compile }.to raise_error(/needs to be provided/)
+          expect { is_expected.to compile }.to raise_error(%r{needs to be provided})
         end
       end
-
     end
   end
 end
