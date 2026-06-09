@@ -23,7 +23,7 @@ describe 'issue', type: :class do
       context 'When profile is specified' do
         let(:params) do
           {
-            profile: 'us/department_of_commerce'
+            profile: 'us/department_of_commerce',
           }
         end
 
@@ -38,7 +38,7 @@ describe 'issue', type: :class do
       context 'When content is specified' do
         let(:params) do
           {
-            content: 'Hello!'
+            content: 'Hello!',
           }
         end
 
@@ -53,7 +53,7 @@ describe 'issue', type: :class do
       context 'When source is specified' do
         let(:params) do
           {
-            source: 'puppet:///modules/site/etc/issue'
+            source: 'puppet:///modules/site/etc/issue',
           }
         end
 
@@ -71,7 +71,7 @@ describe 'issue', type: :class do
       context 'When net_link is true' do
         let(:params) do
           {
-            net_link: true
+            net_link: true,
           }
         end
 
@@ -91,7 +91,7 @@ describe 'issue', type: :class do
         let(:params) do
           {
             net_link: false,
-            net_content: 'Hello!'
+            net_content: 'Hello!',
           }
         end
 
@@ -110,7 +110,7 @@ describe 'issue', type: :class do
       context 'When net_link is false and net_content is not specified' do
         let(:params) do
           {
-            net_link: false
+            net_link: false,
           }
         end
 
