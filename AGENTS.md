@@ -23,7 +23,7 @@ reads them directly — see the Gotchas.
 The module is a single public class; there are no defines and no other classes.
 
 - **`issue` (`manifests/init.pp:42-108`)** — Public entry class (not
-  `assert_private()`'d; consumers `include issue`). It calls
+  `assert_private()`'d; consumers `include 'issue'`). It calls
   `simplib::assert_metadata($module_name)` first (`init.pp:49`). Parameters
   (`init.pp:42-48`):
   - `$profile` (`String`, default `'default'`) — selects a named banner when
